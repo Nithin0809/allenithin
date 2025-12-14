@@ -28,7 +28,7 @@ const WhyMeSection = () => {
     <section className="section-padding relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/5 to-background" />
-      
+
       <div className="relative max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
@@ -38,14 +38,14 @@ const WhyMeSection = () => {
               <span className="gradient-text-secondary">With Me?</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-              I don't just edit videos—I craft experiences that resonate. 
-              With a keen eye for detail and a passion for storytelling, 
+              I don't just edit videos—I craft experiences that resonate.
+              With a keen eye for detail and a passion for storytelling,
               I transform raw footage into compelling content that achieves results.
             </p>
-            
+
             <div className="flex items-center gap-4">
               <div className="h-px flex-1 bg-gradient-to-r from-primary/50 to-transparent" />
-              <span className="text-primary font-display font-bold text-lg">100+ Projects Delivered</span>
+              <span className="text-primary font-display font-bold text-lg">50+ Projects Delivered</span>
             </div>
           </div>
 
@@ -69,7 +69,7 @@ const WhyMeSection = () => {
                     </p>
                   </div>
                 </div>
-                
+
                 {/* Number indicator */}
                 <div className="absolute top-6 right-6 font-display text-5xl font-bold text-muted/30 group-hover:text-primary/20 transition-colors">
                   0{index + 1}
