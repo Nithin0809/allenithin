@@ -1,7 +1,6 @@
 const skills = [
   { name: "Premiere Pro", level: 95, category: "primary" },
   { name: "After Effects", level: 90, category: "secondary" },
-  { name: "DaVinci Resolve", level: 85, category: "accent" },
   { name: "CapCut", level: 92, category: "primary" },
   { name: "Sound Design", level: 80, category: "secondary" },
   { name: "Color Grading", level: 88, category: "accent" },
@@ -28,7 +27,7 @@ const SkillsSection = () => {
   return (
     <section className="section-padding relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      
+
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl md:text-6xl font-bold mb-4">
@@ -43,7 +42,7 @@ const SkillsSection = () => {
           {skills.map((skill, index) => {
             const colors = categoryColors[skill.category as keyof typeof categoryColors];
             return (
-              <div 
+              <div
                 key={skill.name}
                 className="group"
               >
@@ -56,9 +55,9 @@ const SkillsSection = () => {
                   </span>
                 </div>
                 <div className="h-3 bg-muted rounded-full overflow-hidden">
-                  <div 
+                  <div
                     className={`h-full rounded-full ${colors.bg} transition-all duration-1000 ease-out group-hover:${colors.glow}`}
-                    style={{ 
+                    style={{
                       width: `${skill.level}%`,
                       boxShadow: `0 0 15px hsl(var(--${skill.category})/0.4)`
                     }}
@@ -72,7 +71,7 @@ const SkillsSection = () => {
         {/* Tool logos/badges */}
         <div className="mt-16 flex flex-wrap justify-center gap-4">
           {["Adobe Suite", "Resolve", "Final Cut", "Audition", "Figma"].map((tool) => (
-            <span 
+            <span
               key={tool}
               className="px-6 py-3 rounded-full border border-border/50 bg-card/30 text-muted-foreground font-display text-sm uppercase tracking-wider hover:border-primary/50 hover:text-primary transition-all duration-300"
             >

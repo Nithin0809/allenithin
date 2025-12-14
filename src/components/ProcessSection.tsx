@@ -63,7 +63,7 @@ const ProcessSection = () => {
   return (
     <section className="section-padding relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      
+
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl md:text-6xl font-bold mb-4">
@@ -77,8 +77,8 @@ const ProcessSection = () => {
         <div className="relative">
           {/* Connection line */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-primary/30 via-secondary/30 to-accent/30" />
-          
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 justify-items-center">
             {steps.map((step, index) => {
               const colors = stepColors[step.color as keyof typeof stepColors];
               return (
@@ -91,12 +91,12 @@ const ProcessSection = () => {
                     <div className={`absolute top-2 right-3 font-display text-6xl font-bold ${colors.number} transition-colors group-hover:text-opacity-30`}>
                       {step.number}
                     </div>
-                    
+
                     {/* Icon */}
                     <div className={`relative z-10 w-14 h-14 mx-auto rounded-xl ${colors.bg} flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110`}>
                       <step.icon className={`w-7 h-7 ${colors.text}`} />
                     </div>
-                    
+
                     <h3 className="font-display text-lg font-bold mb-2 text-foreground relative z-10">
                       {step.title}
                     </h3>
@@ -104,7 +104,7 @@ const ProcessSection = () => {
                       {step.description}
                     </p>
                   </div>
-                  
+
                   {/* Connector dot */}
                   <div className={`hidden lg:block absolute -bottom-3 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full ${colors.bg} border-2 ${colors.border}`} />
                 </div>

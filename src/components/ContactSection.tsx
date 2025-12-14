@@ -6,22 +6,22 @@ const contactMethods = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@nithin.com",
-    href: "mailto:hello@nithin.com",
+    value: "allenithin14@gmail.com",
+    href: "https://mail.google.com/mail/?view=cm&to=allenithin14@gmail.com",
     color: "primary"
   },
   {
     icon: Instagram,
     label: "Instagram",
-    value: "@nithin.edits",
-    href: "https://instagram.com/nithin.edits",
+    value: "@edit.with.nithin",
+    href: "https://www.instagram.com/edit.with.nithin/",
     color: "secondary"
   },
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    value: "+91 98765 43210",
-    href: "https://wa.me/919876543210",
+    value: "+91 83412 35665",
+    href: "https://wa.me/918341235665",
     color: "accent"
   }
 ];
@@ -33,20 +33,20 @@ const ContactSection = () => {
     <section id="contact" className="section-padding relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-background to-background" />
-      
+
       {/* Subtle ambient glow */}
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
       <div className="absolute top-0 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-[100px]" />
-      
+
       <div ref={contentRef} className="relative max-w-4xl mx-auto text-center">
         <h2 className={`font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight reveal ${isVisible ? 'visible' : ''}`}>
           Let's Create Something
           <br />
           <span className="gradient-text">Powerful</span>
         </h2>
-        
+
         <p className={`text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-12 reveal stagger-1 ${isVisible ? 'visible' : ''}`}>
-          Ready to bring your vision to life? Let's collaborate and create 
+          Ready to bring your vision to life? Let's collaborate and create
           content that makes an impact.
         </p>
 
@@ -74,8 +74,8 @@ const ContactSection = () => {
         {/* CTA Button */}
         <div className={`reveal stagger-5 ${isVisible ? 'visible' : ''}`}>
           <Button variant="hero" size="xl" className="group" asChild>
-            <a href="mailto:hello@nithin.com">
-              <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <a href="https://wa.me/918341235665" target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               Get In Touch
             </a>
           </Button>
