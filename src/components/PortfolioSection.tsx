@@ -1,5 +1,5 @@
 import { Play, ExternalLink } from "lucide-react";
-
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 const projects = [
   {
     title: "Brand Story: Tech Startup",
@@ -52,26 +52,29 @@ const badgeColors = {
 };
 
 const PortfolioSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { ref: gridRef, isVisible: gridVisible } = useScrollReveal({ threshold: 0.05 });
+
   return (
     <section id="portfolio" className="section-padding relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
       
       <div className="relative max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="font-display text-4xl md:text-6xl font-bold mb-4">
+        <div ref={headerRef} className={`text-center mb-16 reveal ${headerVisible ? 'visible' : ''}`}>
+          <h2 className="font-display text-5xl md:text-7xl font-bold mb-4 tracking-tight">
             Selected <span className="gradient-text">Work</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
             A showcase of projects that demonstrate my range and creative vision
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className={`group relative rounded-2xl overflow-hidden border border-border/30 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:scale-105 cursor-pointer ${colorVariants[project.color as keyof typeof colorVariants]}`}
+              className={`group relative rounded-2xl overflow-hidden border border-border/30 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:scale-105 cursor-pointer ${colorVariants[project.color as keyof typeof colorVariants]} reveal-scale stagger-${index + 1} ${gridVisible ? 'visible' : ''}`}
             >
               {/* Thumbnail */}
               <div className="relative aspect-video overflow-hidden">

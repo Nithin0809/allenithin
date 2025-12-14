@@ -1,4 +1,5 @@
 import { Film, Video, Megaphone, Tv, Sparkles } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
   {
@@ -60,29 +61,31 @@ const colorMap = {
 };
 
 const ServicesSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal({ threshold: 0.05 });
+
   return (
     <section id="services" className="section-padding relative">
       {/* Background accent */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="font-display text-4xl md:text-6xl font-bold mb-4">
+        <div ref={headerRef} className={`text-center mb-16 reveal ${headerVisible ? 'visible' : ''}`}>
+          <h2 className="font-display text-5xl md:text-7xl font-bold mb-4 tracking-tight">
             What I <span className="gradient-text">Do</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
             End-to-end video production services that transform ideas into powerful visual stories
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div ref={cardsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
             const colors = colorMap[service.color as keyof typeof colorMap];
             return (
               <div
                 key={service.title}
-                className={`group relative p-8 rounded-2xl border ${colors.border} bg-card/50 backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:-translate-y-2 ${colors.glow}`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className={`group relative p-8 rounded-2xl border ${colors.border} bg-card/50 backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:-translate-y-2 ${colors.glow} reveal-scale stagger-${index + 1} ${cardsVisible ? 'visible' : ''}`}
               >
                 <div className={`w-16 h-16 rounded-xl ${colors.bg} flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110`}>
                   <service.icon className={`w-8 h-8 ${colors.text}`} />

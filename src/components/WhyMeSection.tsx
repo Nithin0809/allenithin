@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const reasons = [
   {
@@ -20,6 +21,9 @@ const reasons = [
 ];
 
 const WhyMeSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal({ threshold: 0.1 });
+
   return (
     <section className="section-padding relative overflow-hidden">
       {/* Background gradient */}
@@ -28,8 +32,8 @@ const WhyMeSection = () => {
       <div className="relative max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
-          <div>
-            <h2 className="font-display text-4xl md:text-6xl font-bold mb-6">
+          <div ref={headerRef} className={`reveal ${headerVisible ? 'visible' : ''}`}>
+            <h2 className="font-display text-5xl md:text-7xl font-bold mb-6 tracking-tight">
               Why Work <br />
               <span className="gradient-text-secondary">With Me?</span>
             </h2>
@@ -46,11 +50,11 @@ const WhyMeSection = () => {
           </div>
 
           {/* Right content - Cards */}
-          <div className="space-y-4">
+          <div ref={cardsRef} className="space-y-4">
             {reasons.map((reason, index) => (
               <div
                 key={reason.title}
-                className="group relative p-6 rounded-xl bg-card/50 border border-border/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.15)]"
+                className={`group relative p-6 rounded-xl bg-card/50 border border-border/50 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.15)] reveal stagger-${index + 1} ${cardsVisible ? 'visible' : ''}`}
               >
                 <div className="flex gap-4">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
