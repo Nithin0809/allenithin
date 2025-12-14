@@ -62,12 +62,12 @@ const PortfolioSection = () => {
               <div className="relative aspect-[9/16] overflow-hidden">
                 <video
                   src={project.video}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-cover"
                   loop
                   playsInline
                   controls
-                  onClick={(e) => {
-                    // Pause all other videos when this one is clicked
+                  onPlay={(e) => {
+                    // Pause all other videos when this one plays
                     document.querySelectorAll('video').forEach(v => {
                       if (v !== e.currentTarget) {
                         v.pause();
@@ -75,9 +75,6 @@ const PortfolioSection = () => {
                     });
                   }}
                 />
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent opacity-40" />
               </div>
             </div>
           ))}
