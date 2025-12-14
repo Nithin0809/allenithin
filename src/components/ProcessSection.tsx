@@ -78,15 +78,15 @@ const ProcessSection = () => {
           {/* Connection line */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-primary/30 via-secondary/30 to-accent/30" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch">
             {steps.map((step, index) => {
               const colors = stepColors[step.color as keyof typeof stepColors];
               return (
                 <div
                   key={step.number}
-                  className="group relative"
+                  className="group relative h-full"
                 >
-                  <div className={`relative p-6 rounded-2xl border ${colors.border} bg-card/50 backdrop-blur-sm text-center transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_0_30px_hsl(var(--${step.color})/0.2)]`}>
+                  <div className={`relative p-6 rounded-2xl border ${colors.border} bg-card/50 backdrop-blur-sm text-center transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_0_30px_hsl(var(--${step.color})/0.2)] h-full flex flex-col justify-start`}>
                     {/* Large number background */}
                     <div className={`absolute top-2 right-3 font-display text-6xl font-bold ${colors.number} transition-colors group-hover:text-opacity-30`}>
                       {step.number}
