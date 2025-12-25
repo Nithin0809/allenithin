@@ -1,27 +1,13 @@
 const skills = [
-  { name: "Premiere Pro", level: 95, category: "primary" },
-  { name: "After Effects", level: 90, category: "secondary" },
-  { name: "CapCut", level: 92, category: "primary" },
-  { name: "Sound Design", level: 80, category: "secondary" },
-  { name: "Color Grading", level: 88, category: "accent" },
-  { name: "Motion Graphics", level: 75, category: "primary" },
-  { name: "Visual Effects", level: 70, category: "secondary" },
+  { name: "Premiere Pro", size: "large", description: "Professional video editing", color: "border-violet-500" },
+  { name: "After Effects", size: "large", description: "Motion graphics & VFX", color: "border-purple-500" },
+  { name: "CapCut", size: "medium", description: "Quick edits & reels", color: "border-pink-500" },
+  { name: "DaVinci Resolve", size: "medium", description: "Color grading", color: "border-orange-500" },
+  { name: "Sound Design", size: "small", description: "", color: "border-cyan-500" },
+  { name: "Color Grading", size: "small", description: "", color: "border-amber-500" },
+  { name: "Motion Graphics", size: "small", description: "", color: "border-emerald-500" },
+  { name: "Visual Effects", size: "small", description: "", color: "border-rose-500" },
 ];
-
-const categoryColors = {
-  primary: {
-    bg: "bg-primary",
-    glow: "shadow-[0_0_20px_hsl(var(--primary)/0.5)]"
-  },
-  secondary: {
-    bg: "bg-secondary",
-    glow: "shadow-[0_0_20px_hsl(var(--secondary)/0.5)]"
-  },
-  accent: {
-    bg: "bg-accent",
-    glow: "shadow-[0_0_20px_hsl(var(--accent)/0.5)]"
-  }
-};
 
 const SkillsSection = () => {
   return (
@@ -38,46 +24,40 @@ const SkillsSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {skills.map((skill, index) => {
-            const colors = categoryColors[skill.category as keyof typeof categoryColors];
+        {/* Bento Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[120px]">
+          {skills.map((skill) => {
+            const sizeClasses = {
+              large: "col-span-2 row-span-2",
+              medium: "col-span-2 md:col-span-1 row-span-2",
+              small: "col-span-1 row-span-1",
+            };
+
             return (
               <div
                 key={skill.name}
-                className="group"
+                className={`${sizeClasses[skill.size as keyof typeof sizeClasses]} group relative rounded-2xl border ${skill.color} bg-card/50 backdrop-blur-sm p-6 flex flex-col justify-end overflow-hidden hover:bg-card/80 transition-all duration-300`}
               >
-                <div className="flex justify-between items-center mb-3">
-                  <span className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Content */}
+                <div className="relative z-10">
+                  <h3 className={`font-display font-bold text-foreground group-hover:text-primary transition-colors ${skill.size === 'large' ? 'text-2xl md:text-3xl' : skill.size === 'medium' ? 'text-xl' : 'text-base'}`}>
                     {skill.name}
-                  </span>
-                  <span className="text-muted-foreground font-mono text-sm">
-                    {skill.level}%
-                  </span>
+                  </h3>
+                  {skill.description && (
+                    <p className="text-muted-foreground text-sm mt-1">
+                      {skill.description}
+                    </p>
+                  )}
                 </div>
-                <div className="h-3 bg-muted rounded-full overflow-hidden">
-                  <div
-                    className={`h-full rounded-full ${colors.bg} transition-all duration-1000 ease-out group-hover:${colors.glow}`}
-                    style={{
-                      width: `${skill.level}%`,
-                      boxShadow: `0 0 15px hsl(var(--${skill.category})/0.4)`
-                    }}
-                  />
-                </div>
+
+                {/* Decorative corner accent */}
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             );
           })}
-        </div>
-
-        {/* Tool logos/badges */}
-        <div className="mt-16 flex flex-wrap justify-center gap-4">
-          {["Adobe Suite", "Resolve", "Final Cut", "Audition", "Figma"].map((tool) => (
-            <span
-              key={tool}
-              className="px-6 py-3 rounded-full border border-border/50 bg-card/30 text-muted-foreground font-display text-sm uppercase tracking-wider hover:border-primary/50 hover:text-primary transition-all duration-300"
-            >
-              {tool}
-            </span>
-          ))}
         </div>
       </div>
     </section>
